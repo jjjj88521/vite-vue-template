@@ -5,13 +5,16 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import VueDevTools from 'vite-plugin-vue-devtools';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import Pages from 'vite-plugin-pages';
+import VueRouter from 'unplugin-vue-router/vite';
 import Layouts from 'vite-plugin-vue-layouts';
 import { unheadVueComposablesImports } from '@unhead/vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueRouter({
+      dts: 'src/types/typed-router.d.ts',
+    }),
     vue(),
     vueJsx(),
     VueDevTools(),
@@ -25,7 +28,7 @@ export default defineConfig({
       extensions: ['vue', 'md'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
     }),
-    Pages(),
+
     Layouts({
       defaultLayout: 'default',
     }),
